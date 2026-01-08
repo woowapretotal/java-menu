@@ -12,32 +12,43 @@ public class RandomMenuDrawer {
     private static final int MAX_INCLUDED_COUNT = 2;
 
     public List<CoachMenusDrawnResult> drawCoachesMenus(List<Coach> coaches, List<Category> categories, List<Menu> menus) {
-        return coaches.stream()
-                .map(coach -> this.drawCoachMenus(coach, categories, menus))
-                .toList();
+        List<List<String>> coachMenusList = new ArrayList<>();
+        for (int i = 0; i < coaches.size(); i++) {
+            coachMenusList.add(new ArrayList<>());
+        }
+
+        for (Category category : categories) {
+            for (int i = 0; i < coaches.size(); i++) {
+                Coach coach = coaches.get(i);
+                List<String> alreadyDrawnMenuNames = coachMenusList.get(i);
+                String menuName = drawMenuFromAllMenu(coach, menus, category, alreadyDrawnMenuNames);
+                alreadyDrawnMenuNames.add(menuName);
+            }
+        }
+
+        List<CoachMenusDrawnResult> results = new ArrayList<>();
+        for (int i = 0; i < coaches.size(); i++) {
+            results.add(new CoachMenusDrawnResult(coaches.get(i), coachMenusList.get(i)));
+        }
+        return results;
     }
 
-    private CoachMenusDrawnResult drawCoachMenus(Coach coach, List<Category> categories, List<Menu> menus) {
-        List<String> drawnMenuNames = categories.stream()
-                .map(category -> this.drawMenuFromAllMenu(coach, menus, category))
-                .toList();
-
-        return new CoachMenusDrawnResult(coach, drawnMenuNames);
-    }
-
-    private String drawMenuFromAllMenu(final Coach coach, final List<Menu> menus, final Category category) {
+    private String drawMenuFromAllMenu(final Coach coach, final List<Menu> menus, final Category category,
+                                       final List<String> alreadyDrawnMenuNames) {
         List<String> menuNames = menus.stream()
                 .filter(menu -> menu.isSameCategory(category))
                 .map(Menu::getName)
                 .toList();
 
-        return drawMenuFromFilteredMenu(coach, menuNames, category);
+        return drawMenuFromFilteredMenu(coach, menuNames, category, alreadyDrawnMenuNames);
     }
 
-    private String drawMenuFromFilteredMenu(final Coach coach, final List<String> filteredMenuNames, final Category category) {
+    private String drawMenuFromFilteredMenu(final Coach coach, final List<String> filteredMenuNames,
+                                            final Category category, final List<String> alreadyDrawnMenuNames) {
         while (true) {
             String drawnMenuName = Randoms.shuffle(filteredMenuNames).getFirst();
-            if (!coach.containsHateMenu(new Menu(drawnMenuName, category))) {
+            if (!coach.containsHateMenu(new Menu(drawnMenuName, category))
+                    && !alreadyDrawnMenuNames.contains(drawnMenuName)) {
                 return drawnMenuName;
             }
         }
