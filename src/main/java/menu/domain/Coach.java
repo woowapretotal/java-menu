@@ -17,4 +17,8 @@ public class Coach {
     public String getName() {
         return name.value();
     }
+
+    public boolean isSameName(String otherName) {
+        return name.value().equals(otherName);
+    }
 }

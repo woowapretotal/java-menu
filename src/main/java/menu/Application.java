@@ -11,6 +11,8 @@ public class Application {
             MenuController menuController = appConfig.menuController();
             menuController.printInitializeMessage();
             menuController.registerCoachNamesWithErrorRetrying();
+            menuController.registerHateMenuWithErrorRetrying();
+            menuController.drawMenus();
         } finally {
             Console.close();
         }

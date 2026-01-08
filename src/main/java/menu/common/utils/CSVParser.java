@@ -21,7 +21,7 @@ public final class CSVParser {
     }
 
     private static void validateNotBlank(final String commaSeperatedValue) {
-        if (commaSeperatedValue == null || commaSeperatedValue.isBlank()) {
+        if (commaSeperatedValue == null) {
             throw new ApplicationException(EMPTY_PARSED_VALUE);
         }
     }

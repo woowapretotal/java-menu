@@ -8,4 +8,8 @@ public class Menu {
         this.name = name;
         this.category = category;
     }
+
+    public boolean isSameName(String otherName) {
+        return name.equals(otherName);
+    }
 }

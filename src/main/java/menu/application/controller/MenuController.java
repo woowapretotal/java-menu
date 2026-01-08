@@ -27,12 +27,18 @@ public class MenuController extends RetryController {
         });
     }
 
-    public void runWithRetrying() {
-        /*XServiceXXXResponse response = retrying(() -> {
-            int xx = inputReader.readXX();
-            return xService.logic(new XServiceXXXRequest(xx));
-        });
+    public void registerHateMenuWithErrorRetrying() {
+        List<String> coachNames = menuService.findAllCoachNames();
 
-        outputView.printXX(response);*/
+        coachNames.forEach((coachName) -> {
+            retryingWithoutNoResponse(() -> {
+                List<String> hateMenus = inputAdapter.readHateMenus(coachName);
+                menuService.registerHateMenus(coachName, hateMenus);
+            });
+        });
+    }
+
+    public void drawMenus() {
+//        menuService.drawMenus();
     }
 }
