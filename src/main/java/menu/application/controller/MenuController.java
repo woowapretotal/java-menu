@@ -2,6 +2,7 @@ package menu.application.controller;
 
 import menu.application.controller.adapter.ConsoleInputAdapter;
 import menu.application.service.MenuService;
+import menu.application.service.response.DrawResponse;
 import menu.application.view.ConsoleOutputView;
 
 import java.util.List;
@@ -39,6 +40,7 @@ public class MenuController extends RetryController {
     }
 
     public void drawMenus() {
-//        menuService.drawMenus();
+        DrawResponse drawResponse = menuService.drawMenus();
+        outputView.printDrawResult(drawResponse);
     }
 }

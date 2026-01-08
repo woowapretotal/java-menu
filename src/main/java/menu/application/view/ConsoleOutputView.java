@@ -19,7 +19,8 @@ public class ConsoleOutputView {
     public void printDrawResult(DrawResponse drawResponse) {
         System.out.println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]");
         System.out.println(OutputFormatter.formatCategory(drawResponse.categoryNames()));
-        System.out.println(OutputFormatter.formatCoachDrawResults(drawResponse.coachDrawResponses()));
+        System.out.print(OutputFormatter.formatCoachDrawResults(drawResponse.coachDrawResponses()) + GlobalMessage.BLANK_AND_NEW_LINE.get());
+        System.out.println("추천을 완료했습니다.");
     }
 
 }

@@ -10,4 +10,12 @@ public class CoachMenusDrawnResult {
         this.coach = coach;
         this.menuNames = menuNames;
     }
+
+    public Coach getCoach() {
+        return coach;
+    }
+
+    public List<String> getMenuNames() {
+        return menuNames;
+    }
 }

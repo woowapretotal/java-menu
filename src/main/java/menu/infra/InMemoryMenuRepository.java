@@ -27,6 +27,11 @@ public class InMemoryMenuRepository implements MenuRepository {
                 .findFirst();
     }
 
+    @Override
+    public List<Menu> findAll() {
+        return menus;
+    }
+
     private void addJapanese() {
         String menuLine = "규동, 우동, 미소시루, 스시, 가츠동, 오니기리, 하이라이스, 라멘, 오코노미야끼";
         convertAndMenus(menuLine, Category.JAPANESE);

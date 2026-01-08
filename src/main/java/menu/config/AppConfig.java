@@ -8,6 +8,7 @@ import menu.application.view.ConsoleOutputView;
 import menu.domain.CoachFactory;
 import menu.domain.CoachRepository;
 import menu.domain.MenuRepository;
+import menu.domain.RandomMenuDrawer;
 import menu.infra.InMemoryCoachRepository;
 import menu.infra.InMemoryMenuRepository;
 
@@ -23,9 +24,10 @@ public class AppConfig {
 
     // == domain service ==
     private final CoachFactory coachFactory = new CoachFactory();
+    private final RandomMenuDrawer drawer = new RandomMenuDrawer();
 
     // == application service ==
-    private final MenuService menuService = new MenuService(coachRepository, menuRepository, coachFactory);
+    private final MenuService menuService = new MenuService(coachRepository, menuRepository, coachFactory, drawer);
 
     private final MenuController menuController = new MenuController(menuService, inputAdapter, outputView);
 
