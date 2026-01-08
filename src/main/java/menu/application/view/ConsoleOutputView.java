@@ -1,6 +1,6 @@
 package menu.application.view;
 
-import menu.application.service.response.DomainListResponse;
+import menu.application.service.response.DrawResponse;
 
 public class ConsoleOutputView {
 
@@ -16,9 +16,10 @@ public class ConsoleOutputView {
         System.out.println(OutputFormatter.formatErrorMessage(errorMessage));
     }
 
-    public void printDomains(final DomainListResponse listResponse) {
-        System.out.println(OutputFormatter.formatDomains(listResponse) +
-                GlobalMessage.BLANK_AND_NEW_LINE.get());
+    public void printDrawResult(DrawResponse drawResponse) {
+        System.out.println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]");
+        System.out.println(OutputFormatter.formatCategory(drawResponse.categoryNames()));
+        System.out.println(OutputFormatter.formatCoachDrawResults(drawResponse.coachDrawResponses()));
     }
 
 }

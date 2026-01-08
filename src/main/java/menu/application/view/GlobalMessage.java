@@ -6,6 +6,7 @@ public enum GlobalMessage {
     LINE_SEPARATOR(System.lineSeparator()),
     BLANK_AND_NEW_LINE(System.lineSeparator().repeat(2)),
     BAR("|"),
+    BAR_SPACE(" | "),
     HYPHEN("-"),
     COMMA(","),
     SPACE(" "),
