@@ -17,6 +17,7 @@ public enum ErrorMessage {
     OUT_OF_COACH_COUNT("코치는 최소 %d명, 최대 %d명 입니다"),
     CANNOT_FIND_COACH("코치를 찾을 수 없습니다."),
     CANNOT_FIND_MENU("메뉴를 찾을 수 없습니다."),
+    CANNOT_FIND_CATEGORY("해당 ID에 속한 카테고리가 존재하지 않습니다."),
 
     INVALID_MENU_NUMBER("존재하지 않는 메뉴를 선택하셨습니다."),
     EMPTY_PARSED_VALUE("비어있는 항목이 존재합니다."),

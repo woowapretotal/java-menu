@@ -21,4 +21,8 @@ public class Coach {
     public boolean isSameName(String otherName) {
         return name.value().equals(otherName);
     }
+
+    public boolean containsHateMenu(Menu menu) {
+        return hateMenus.containHateMenu(menu);
+    }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HateMenus {
     private static final int HATE_MENU_MAX = 2;
-    
+
     private final List<Menu> hateMenus;
 
     public HateMenus(final List<Menu> hateMenus) {
@@ -19,5 +19,9 @@ public class HateMenus {
         if (hateMenus.size() > HATE_MENU_MAX) {
             throw new DomainException(ErrorMessage.EXCEEDS_MAX_HATE_MENU, HATE_MENU_MAX);
         }
+    }
+
+    public boolean containHateMenu(Menu menu) {
+        return hateMenus.contains(menu);
     }
 }
