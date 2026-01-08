@@ -27,4 +27,9 @@ public class ConsoleInputAdapter {
         outputView.printOnboardingMessage("코치의 이름을 입력해 주세요. (, 로 구분)");
         return CSVParser.split(inputView.readLine());
     }
+
+    public List<String> readHateMenus(String coachName) {
+        outputView.printOnboardingMessage("%s(이)가 못 먹는 메뉴를 입력해 주세요.".formatted(coachName));
+        return CSVParser.split(inputView.readLine());
+    }
 }
