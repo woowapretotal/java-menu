@@ -13,6 +13,8 @@ public enum ErrorMessage {
     BELOW_MIN_VALUE("최솟값 %s 미만입니다."),
     EXCEEDS_MAX_LENGTH("최대 길이 %d를 초과하였습니다."),
     BELOW_MIN_LENGTH("최소 길이 %d 미만입니다."),
+    EXCEEDS_MAX_HATE_MENU("못 먹는 음식은 최대 %d개 입니다."),
+    OUT_OF_COACH_COUNT("코치는 최소 %d명, 최대 %d명 입니다"),
 
     INVALID_MENU_NUMBER("존재하지 않는 메뉴를 선택하셨습니다."),
     EMPTY_PARSED_VALUE("비어있는 항목이 존재합니다."),

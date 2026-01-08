@@ -20,10 +20,10 @@ public class MenuController extends RetryController {
         outputView.printInitializingMessage();
     }
 
-    public void registerCoachNamesWithRetrying() {
+    public void registerCoachNamesWithErrorRetrying() {
         retryingWithoutNoResponse(() -> {
             List<String> coachNames = inputAdapter.readCoachNames();
-            menuService.registerCoachName();
+            menuService.registerCoachName(coachNames);
         });
     }
 
